@@ -1,2 +1,1 @@
-# custom-cms
-A PHP mySQL blog.
+# Useful php snippets
