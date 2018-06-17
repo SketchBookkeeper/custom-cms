@@ -1,8 +1,8 @@
 <?php
 
-require 'Task.php';
+require 'core/Task.php';
 
-$query = require 'bootstrap.php';
+$query = require 'core/bootstrap.php';
 
 $tasks = $query->SelectAll('todos');
 
@@ -12,6 +12,4 @@ $tasks = array_map(function ($task) {
 
 }, $tasks);
 
-echo '<pre>';
-print_r($tasks);
-echo '</pre>';
+require 'views/index.view.php';
