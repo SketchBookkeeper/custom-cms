@@ -1,1 +1,1 @@
-# Useful php snippets
+# Example of a simple PHP app
