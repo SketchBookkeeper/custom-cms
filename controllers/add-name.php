@@ -1,3 +1,7 @@
 <?php
 
-$app['database']->addSingle($_POST['name'], 'users', 'name');
+$app['database']->insert('users', [
+	'name' => $_POST['name']
+]);
+
+header('Location: /');

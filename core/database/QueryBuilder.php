@@ -15,11 +15,21 @@ class QueryBuilder {
 		return $statement->fetchAll(PDO::FETCH_CLASS);
 	}
 
-	public function addSingle($value, $table, $column) {
-		$statement = $this->pdo->prepare(
-			"INSERT INTO $table ( $column ) VALUE ( '$value' )"
+	public function insert($table, $parameters)
+	{
+		$sql = sprintf(
+			'INSERT INTO %s (%s) VALUES (%s)',
+			$table,
+			implode(', ', array_keys($parameters)),
+			':' . implode(', :', array_keys($parameters))
 		);
 
-		$statement->execute();
+		try {
+			$statement = $this->pdo->prepare($sql);
+
+			$statement->execute($parameters);
+		} catch (Exception $e) {
+			die($e);
+		}
 	}
 }
