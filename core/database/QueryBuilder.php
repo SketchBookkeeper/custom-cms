@@ -14,4 +14,12 @@ class QueryBuilder {
 
 		return $statement->fetchAll(PDO::FETCH_CLASS);
 	}
+
+	public function addSingle($value, $table, $column) {
+		$statement = $this->pdo->prepare(
+			"INSERT INTO $table ( $column ) VALUE ( '$value' )"
+		);
+
+		$statement->execute();
+	}
 }
