@@ -1,12 +1,5 @@
 <?php
-require 'core/Task.php';
 
-$tasks = $app['database']->SelectAll('todos');
-
-$tasks = array_map(function ($task) {
-
-	return new Task($task->description);
-
-}, $tasks);
+$users = App::get('database')->selectAll('users');
 
 require 'views/index.view.php';
